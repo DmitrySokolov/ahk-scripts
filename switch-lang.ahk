@@ -37,13 +37,17 @@ GetLeftChars() {
 Pause::  ; Fix text
     prevClipboard := ClipboardAll
     Clipboard =
-    Send, ^+{Left}^c
+    Send, ^c
     ClipWait
+    if ( StrLen(Clipboard) < 1 ) {
+        Send, ^+{Left}^c
+        ClipWait
+    }
     if (!ErrorLevel) {
         Loop, Parse, Clipboard
         {
             code := Ord(A_LoopField)
-            if (0x41 <= code  && code <= 0x5A || 0x61 <= code  && code <= 0x7A) {
+            if (0x41 <= code  && code <= 0x5A || 0x61 <= code  && code <= 0x7A || code == 0x5B || code == 0x5D || code == 0x7B || code == 0x7D || code == 0x3A || code == 0x3B || code == 0x22 || code == 0x27 || code == 0x60 || code == 0x7E || code == 0x2C || code == 0x2E || code == 0x3C || code == 0x3E ) {
                 ; Eng chars, switching to Rus
                 GetLeftChars()
                 Clipboard := SwitchLang(Clipboard, 1)
