@@ -1,4 +1,9 @@
-﻿UrlEscape( url, flags ) {
+﻿;
+;  search.ahk
+;
+
+
+UrlEscape( url, flags ) {
     VarSetCapacity( newUrl,4096,0 ), pcche := 4096
     DllCall( "shlwapi\UrlEscapeW", Str,url, Str,newUrl, UIntP,pcche, UInt,flags )
     Return newUrl
