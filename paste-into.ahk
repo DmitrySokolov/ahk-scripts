@@ -1,9 +1,14 @@
-﻿#^c::  ; Insert citation into Discord with Win+Ctrl+c
+﻿;
+;  paste-into.ahk
+;
+
+
+#^c::  ; Insert citation into Discord with Win+Ctrl+c
     prevClipboard := ClipboardAll
     Clipboard =
     Send, ^c
     ClipWait
-    if !(ErrorLevel) {
+    if (!ErrorLevel) {
         WinActivate, ahk_exe Discord.exe ahk_class Chrome_WidgetWin_1
         WinWaitActive, ahk_exe Discord.exe ahk_class Chrome_WidgetWin_1
         Send, {Tab}
@@ -44,7 +49,7 @@ return
     Clipboard =
     Send, ^c
     ClipWait
-    if !(ErrorLevel) {
+    if (!ErrorLevel) {
         WinActivate, ahk_exe Skype.exe ahk_class tSkMainForm
         WinWaitActive, ahk_exe Skype.exe ahk_class tSkMainForm
         ControlFocus, ClassNN, TChatRichEdit1
@@ -54,4 +59,20 @@ return
         Sleep, 100
         Clipboard := prevClipboard
     }
+return
+
+
+#`::  ; Win+`  Replace selected text with `text`
+    prevClipboard := ClipboardAll
+    Clipboard =
+    Send, ^x
+    ClipWait, 0.1
+    if (!ErrorLevel && StrLen(Clipboard) > 0) {
+        Clipboard := "``" . Clipboard . "``"
+    } else {
+        Clipboard := "``"
+    }
+    Send, ^v
+    Sleep, 100
+    Clipboard := prevClipboard
 return
