@@ -5,13 +5,21 @@
 
 #^c::  ; Insert citation into Discord with Win+Ctrl+c
     prevClipboard := ClipboardAll
+    ; Put selected text into clipboard
     Clipboard =
     Send, ^c
     ClipWait
+    KeyWait Control
+    KeyWait LWin
+    KeyWait RWin
+    KeyWait c
     if (!ErrorLevel) {
+        ; Activate Discord app
         WinActivate, ahk_exe Discord.exe ahk_class Chrome_WidgetWin_1
         WinWaitActive, ahk_exe Discord.exe ahk_class Chrome_WidgetWin_1
-        Send, {Tab}
+        ; Move focus to input control
+        Send, {Shift}
+        ; Paste text
         lines := StrSplit(Clipboard, "`r`n", , 2)
         if (lines.Length() > 1) {
             pos := InStr(lines[1], "Сегодня в")
@@ -49,6 +57,11 @@ return
     Clipboard =
     Send, ^c
     ClipWait
+    KeyWait Control
+    KeyWait LWin
+    KeyWait RWin
+    KeyWait Shift
+    KeyWait c
     if (!ErrorLevel) {
         WinActivate, ahk_exe Skype.exe ahk_class tSkMainForm
         WinWaitActive, ahk_exe Skype.exe ahk_class tSkMainForm
