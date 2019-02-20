@@ -10,6 +10,7 @@ Assigns global hot-keys for pasting into apps:
 * `Win+Ctrl+c` - insert the selected text as a citation into Discord
 * `Win+Ctrl+e` - insert `@everyone` into Discord
 * `Win+Ctrl+Shift+c` - insert the selected text as a code into Skype
+* ``Win+` `` - replace selected text with \`text \`
 
 ## search.ahk
 
