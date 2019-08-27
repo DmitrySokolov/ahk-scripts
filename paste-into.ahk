@@ -18,7 +18,8 @@
         WinActivate, ahk_exe Discord.exe ahk_class Chrome_WidgetWin_1
         WinWaitActive, ahk_exe Discord.exe ahk_class Chrome_WidgetWin_1
         ; Move focus to input control
-        Send, {Shift}
+        Send, a
+        Send, {Backspace}
         ; Paste text
         lines := StrSplit(Clipboard, "`r`n", , 2)
         if (lines.Length() > 1) {
