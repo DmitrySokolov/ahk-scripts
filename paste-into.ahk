@@ -76,7 +76,7 @@ return
 return
 
 
-#`::  ; Win+`  Replace selected text with `text`
+^`::  ; Ctrl+`  Replace selected text with `text`
     prevClipboard := ClipboardAll
     Clipboard =
     Send, ^x

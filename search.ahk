@@ -55,3 +55,8 @@ return
 #^g::  ; Search in Google with Win+Ctrl+g
   OpenUrl("https://www.google.com/search?q=")
 return
+
+
+#^h::  ; Search in cppreference.com with Win+Ctrl+h
+  OpenUrl("https://en.cppreference.com/mwiki/index.php?search=")
+return
