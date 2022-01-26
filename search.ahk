@@ -38,7 +38,7 @@ OpenURL(url, title:="") {
 
 
 #^s::  ; YaTranslate with Win+Ctrl+s
-  OpenURL("https://translate.yandex.ru/?text=", "Яндекс.Переводчик")
+  OpenURL("https://translate.yandex.ru/?clid=41279&yasoft=punto&text=")
 return
 
 
